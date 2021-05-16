@@ -34,7 +34,7 @@ extension WeatherVC: CLLocationManagerDelegate{
         if CLLocationManager.locationServicesEnabled(){
             // setup location manager
             setupLocationManager()
-            checkLocationAuthorization()
+//            checkLocationAuthorization()
             
         } else {
             // Show alert letting the user know they have to turn this on
@@ -43,8 +43,10 @@ extension WeatherVC: CLLocationManagerDelegate{
     
     func getUserCoordinates(){
         if let coordinates = locationManager.location?.coordinate{
-            print("Long: \(coordinates.longitude), Lat: \(coordinates.latitude)")
-            //TODO: Assign coordinates to LocationManager singleton
+            LocationService.shared.lattitude = coordinates.latitude
+            LocationService.shared.longitude = coordinates.longitude
+            print("Lat:", LocationService.shared.lattitude!)
+            print("Long:", LocationService.shared.longitude!)
         }
     }
     
@@ -72,6 +74,8 @@ extension WeatherVC: CLLocationManagerDelegate{
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        locationManager.startMonitoringSignificantLocationChanges()
+        locationManager.stopUpdatingLocation()
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
