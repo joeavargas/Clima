@@ -41,10 +41,19 @@ extension WeatherVC: CLLocationManagerDelegate{
         }
     }
     
+    func getUserCoordinates(){
+        if let coordinates = locationManager.location?.coordinate{
+            print("Long: \(coordinates.longitude), Lat: \(coordinates.latitude)")
+            //TODO: Assign coordinates to LocationManager singleton
+        }
+    }
+    
     func checkLocationAuthorization(){
         switch locationManager.authorizationStatus {
         case .authorizedWhenInUse:
             // do GPS location stuff
+            getUserCoordinates()
+            locationManager.startUpdatingLocation()
             break
         case .denied:
             //TODO: Show an alert instructing user how to turn on permission
@@ -63,10 +72,9 @@ extension WeatherVC: CLLocationManagerDelegate{
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        
+        checkLocationAuthorization()
     }
 }
