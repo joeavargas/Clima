@@ -59,8 +59,6 @@
 		E3310D122650F5410031351E /* Clima */ = {
 			isa = PBXGroup;
 			children = (
-				E3957F2A2651254E0074C3CA /* Model */,
-				E3957F29265125470074C3CA /* View */,
 				E3957F25265124FB0074C3CA /* Controller */,
 				E3957F282651251C0074C3CA /* Services */,
 				E3310D192650F5410031351E /* Main.storyboard */,
@@ -95,20 +93,6 @@
 				E3957F26265125170074C3CA /* LocationService.swift */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		E3957F29265125470074C3CA /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		E3957F2A2651254E0074C3CA /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
