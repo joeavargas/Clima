@@ -16,6 +16,7 @@ class WeatherVC: UIViewController {
         super.viewDidLoad()
         
         checkLocationServices()
+        NetworkRequest.shared.fetchWeatherData()
         
     }
 

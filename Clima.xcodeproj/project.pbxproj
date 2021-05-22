@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E30AEAD6265909B00038B59B /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30AEAD5265909B00038B59B /* Network.swift */; };
 		E3310D142650F5410031351E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3310D132650F5410031351E /* AppDelegate.swift */; };
 		E3310D162650F5410031351E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3310D152650F5410031351E /* SceneDelegate.swift */; };
 		E3310D182650F5410031351E /* WeatherVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3310D172650F5410031351E /* WeatherVC.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E30AEAD5265909B00038B59B /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		E3310D102650F5410031351E /* Clima.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clima.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3310D132650F5410031351E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3310D152650F5410031351E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				E3957F26265125170074C3CA /* LocationService.swift */,
+				E30AEAD5265909B00038B59B /* Network.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -165,6 +168,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E30AEAD6265909B00038B59B /* Network.swift in Sources */,
 				E3310D182650F5410031351E /* WeatherVC.swift in Sources */,
 				E3310D142650F5410031351E /* AppDelegate.swift in Sources */,
 				E3957F27265125170074C3CA /* LocationService.swift in Sources */,
