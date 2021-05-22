@@ -42,7 +42,6 @@ class NetworkRequest {
                         switch response.statusCode{
                         case 200:
                             // parse successful result (weather data)
-                            print(data)
                             let weatherData = try JSONDecoder().decode(WeatherData.self, from: data)
                             onSuccess(weatherData)
                         default:
