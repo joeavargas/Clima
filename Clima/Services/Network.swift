@@ -8,17 +8,18 @@
 import Foundation
 import CoreLocation
 
+typealias OnApiSuccess = (WeatherData) -> Void
+typealias OnApiError = (String) -> Void
+
 class NetworkRequest {
     
     static let shared = NetworkRequest()
-    
-    lazy var lat = 29.772674560546875
-    lazy var long = -95.39841050291005
+
     lazy var API_KEY = "518596e8c6802246f190698a108afa4a"
-    lazy var URL_BASE = "https://api.openweathermap.org/data/2.5/onecall?lat=\(lat)&lon=\(long)&exclude=minutely,alerts&appid=\(API_KEY)"
     let session = URLSession(configuration: .default)
     
-    func fetchWeatherData(){
+    func fetchWeatherData(location: CLLocationCoordinate2D, onSuccess: @escaping OnApiSuccess, onError: @escaping OnApiError){
+        let URL_BASE = "https://api.openweathermap.org/data/2.5/onecall?lat=\(location.latitude)&lon=\(location.longitude)&exclude=minutely,alerts&appid=\(API_KEY)"
             let url = URL(string: "\(URL_BASE)")
             
             let task = session.dataTask(with: url!) { data, response, error in
@@ -42,9 +43,12 @@ class NetworkRequest {
                         case 200:
                             // parse successful result (weather data)
                             print(data)
+                            let weatherData = try JSONDecoder().decode(WeatherData.self, from: data)
+                            onSuccess(weatherData)
                         default:
                             // handle unsuccessful error (400s)
                             print("Error 400")
+                            onError(error!.localizedDescription)
                         }
                     } catch{
                         print(error.localizedDescription)

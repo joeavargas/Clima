@@ -16,7 +16,7 @@ class WeatherVC: UIViewController {
         super.viewDidLoad()
         
         checkLocationServices()
-        NetworkRequest.shared.fetchWeatherData()
+        
         
     }
 
@@ -33,12 +33,10 @@ extension WeatherVC: CLLocationManagerDelegate{
 
     func checkLocationServices(){
         if CLLocationManager.locationServicesEnabled(){
-            // setup location manager
             setupLocationManager()
-//            checkLocationAuthorization()
             
         } else {
-            // Show alert letting the user know they have to turn this on
+            // TODO: Show alert letting the user know they have to turn this on
         }
     }
     
@@ -48,6 +46,17 @@ extension WeatherVC: CLLocationManagerDelegate{
             LocationService.shared.longitude = coordinates.longitude
             print("Lat:", LocationService.shared.lattitude!)
             print("Long:", LocationService.shared.longitude!)
+            NetworkRequest.shared.fetchWeatherData(location: coordinates) { data in
+                print("PRINT: ", data)
+                
+                DispatchQueue.main.async {
+                    // TODO: Update UI with weather data
+                }
+            } onError: { errorMessage in
+                // TODO: display error in an alert
+                print("PRINT: ", errorMessage)
+            }
+
         }
     }
     
