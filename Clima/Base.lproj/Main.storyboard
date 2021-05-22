@@ -109,7 +109,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="cityNameLabel" destination="2J2-gV-Ex6" id="CqS-TA-SBm"/>
+                        <outlet property="cityNameLabel" destination="2J2-gV-Ex6" id="dAL-X2-dtH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

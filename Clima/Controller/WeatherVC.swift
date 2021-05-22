@@ -10,11 +10,12 @@ import CoreLocation
 
 class WeatherVC: UIViewController {
     
-    // IBOutlets
+    // IBOulet
     @IBOutlet weak var cityNameLabel: UILabel!
     
     let locationManager = CLLocationManager()
     let geocoder = CLGeocoder()
+    var location: CLLocation?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,7 +95,9 @@ extension WeatherVC: CLLocationManagerDelegate{
         // get the latest location
         let latestLocation = locations.last!
         
-        if latestLocation.horizontalAccuracy < 0 {return}
+        if latestLocation.horizontalAccuracy < 0 {
+            return
+        }
         
         // if location is nil or if user location has updated
         if location == nil || location!.horizontalAccuracy > latestLocation.horizontalAccuracy{
@@ -103,7 +106,7 @@ extension WeatherVC: CLLocationManagerDelegate{
             locationManager.stopUpdatingLocation()
             locationManager.delegate = nil
             
-            // get city name from passed in location and update cityLabel
+            // start reverse geocoding
             getCityLocalityInfo(from: location!)
         }
     }
