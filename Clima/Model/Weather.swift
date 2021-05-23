@@ -14,7 +14,7 @@ struct WeatherData: Codable{
 }
 
 struct Current: Codable {
-    let dt: Int
+    let dt: Double
     let temp: Double
     let feels_like: Double
     let weather: [Weather]
@@ -26,7 +26,7 @@ struct Current: Codable {
 }
 
 struct Hourly: Codable{
-    let dt: Int
+    let dt: Double
     let temp: Double
     let weather: [Weather]
        
@@ -37,7 +37,7 @@ struct Hourly: Codable{
 }
 
 struct Daily: Codable{
-    let dt: Int
+    let dt: Double
     let temp: Temp
     let weather: [Weather]
     

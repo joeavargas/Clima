@@ -19,7 +19,7 @@ class NetworkRequest {
     let session = URLSession(configuration: .default)
     
     func fetchWeatherData(location: CLLocationCoordinate2D, onSuccess: @escaping OnApiSuccess, onError: @escaping OnApiError){
-        let URL_BASE = "https://api.openweathermap.org/data/2.5/onecall?lat=\(location.latitude)&lon=\(location.longitude)&exclude=minutely,alerts&appid=\(API_KEY)"
+        let URL_BASE = "https://api.openweathermap.org/data/2.5/onecall?lat=\(location.latitude)&lon=\(location.longitude)&exclude=minutely,alerts&appid=\(API_KEY)&units=imperial"
             let url = URL(string: "\(URL_BASE)")
             
             let task = session.dataTask(with: url!) { data, response, error in

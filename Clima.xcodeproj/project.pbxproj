@@ -11,6 +11,9 @@
 		E30AEAD8265913590038B59B /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30AEAD7265913590038B59B /* Weather.swift */; };
 		E30AEADD265940340038B59B /* ForecastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30AEADB265940340038B59B /* ForecastCollectionViewCell.swift */; };
 		E30AEADE265940340038B59B /* ForecastCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E30AEADC265940340038B59B /* ForecastCollectionViewCell.xib */; };
+		E30AEAE2265A2BEB0038B59B /* IconManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30AEAE1265A2BEB0038B59B /* IconManager.swift */; };
+		E30AEAE4265A2D140038B59B /* UnixTimeConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30AEAE3265A2D140038B59B /* UnixTimeConverter.swift */; };
+		E30AEAE8265A2D5D0038B59B /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30AEAE7265A2D5D0038B59B /* Date.swift */; };
 		E3310D142650F5410031351E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3310D132650F5410031351E /* AppDelegate.swift */; };
 		E3310D162650F5410031351E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3310D152650F5410031351E /* SceneDelegate.swift */; };
 		E3310D182650F5410031351E /* WeatherVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3310D172650F5410031351E /* WeatherVC.swift */; };
@@ -25,6 +28,9 @@
 		E30AEAD7265913590038B59B /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		E30AEADB265940340038B59B /* ForecastCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastCollectionViewCell.swift; sourceTree = "<group>"; };
 		E30AEADC265940340038B59B /* ForecastCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForecastCollectionViewCell.xib; sourceTree = "<group>"; };
+		E30AEAE1265A2BEB0038B59B /* IconManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconManager.swift; sourceTree = "<group>"; };
+		E30AEAE3265A2D140038B59B /* UnixTimeConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnixTimeConverter.swift; sourceTree = "<group>"; };
+		E30AEAE7265A2D5D0038B59B /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		E3310D102650F5410031351E /* Clima.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clima.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3310D132650F5410031351E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3310D152650F5410031351E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +78,23 @@
 			path = ForecastCollectionViewCell;
 			sourceTree = "<group>";
 		};
+		E30AEAE0265A2BB00038B59B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				E30AEAE1265A2BEB0038B59B /* IconManager.swift */,
+				E30AEAE3265A2D140038B59B /* UnixTimeConverter.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		E30AEAE5265A2D2E0038B59B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E30AEAE7265A2D5D0038B59B /* Date.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		E3310D072650F5410031351E = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +119,8 @@
 				E30AEADA265940100038B59B /* View */,
 				E3957F25265124FB0074C3CA /* Controller */,
 				E3957F282651251C0074C3CA /* Services */,
+				E30AEAE0265A2BB00038B59B /* Helpers */,
+				E30AEAE5265A2D2E0038B59B /* Extensions */,
 				E3310D192650F5410031351E /* Main.storyboard */,
 				E3310D1C2650F5420031351E /* Assets.xcassets */,
 				E3310D1E2650F5420031351E /* LaunchScreen.storyboard */,
@@ -202,10 +227,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E30AEAE2265A2BEB0038B59B /* IconManager.swift in Sources */,
+				E30AEAE8265A2D5D0038B59B /* Date.swift in Sources */,
 				E30AEAD6265909B00038B59B /* Network.swift in Sources */,
 				E3310D182650F5410031351E /* WeatherVC.swift in Sources */,
 				E3310D142650F5410031351E /* AppDelegate.swift in Sources */,
 				E3957F27265125170074C3CA /* LocationService.swift in Sources */,
+				E30AEAE4265A2D140038B59B /* UnixTimeConverter.swift in Sources */,
 				E30AEADD265940340038B59B /* ForecastCollectionViewCell.swift in Sources */,
 				E30AEAD8265913590038B59B /* Weather.swift in Sources */,
 				E3310D162650F5410031351E /* SceneDelegate.swift in Sources */,

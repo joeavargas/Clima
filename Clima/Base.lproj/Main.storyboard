@@ -75,7 +75,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="WcX-4r-xXd"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ApU-8O-TEe">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ApU-8O-TEe">
                                     <size key="itemSize" width="90" height="100"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -110,6 +110,12 @@
                     </view>
                     <connections>
                         <outlet property="cityNameLabel" destination="2J2-gV-Ex6" id="dAL-X2-dtH"/>
+                        <outlet property="dayAndDate" destination="fbN-lq-T5B" id="fdQ-Bv-PW5"/>
+                        <outlet property="forecastCollectionView" destination="lff-L7-uVD" id="i7M-9f-B6v"/>
+                        <outlet property="forecastSegment" destination="meU-Oc-jNV" id="peh-IA-Gqk"/>
+                        <outlet property="tempLabel" destination="TLE-G8-mvD" id="OCY-56-q0H"/>
+                        <outlet property="weatherConditionLabel" destination="r65-xD-8sS" id="hfB-4R-bFw"/>
+                        <outlet property="weatherIconImage" destination="gsN-fb-LHs" id="FzH-KR-oX7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -8,10 +8,33 @@
 import UIKit
 
 class ForecastCollectionViewCell: UICollectionViewCell {
+    
+    @IBOutlet var timeLabel: UILabel!
+    @IBOutlet var iconImage: UIImageView!
+    @IBOutlet var tempLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    static let identifier = "ForecastCollectionViewCell"
+    static func nib() -> UINib{
+        return UINib(nibName: "ForecastCollectionViewCell", bundle: nil)
+    }
+    
+    func configureHourly(with hourlyModel: Hourly){
+        self.timeLabel.text = currentDateFrom(unixDate: hourlyModel.dt)?.time()
+        // TODO: Fix icon retrieval
+        self.iconImage.image = returnIconImage(from: "01d")
+        self.tempLabel.text = "\(Int(hourlyModel.temp))°"
+    }
+    
+    func configureDaily(with dailyModel: Daily){
+        self.timeLabel.text = currentDateFrom(unixDate: dailyModel.dt)?.dayOfTheWeek()
+        // TODO: Fix icon retrieval
+        self.iconImage.image = returnIconImage(from: "01d")
+        self.tempLabel.text = "\(Int(dailyModel.temp.max))°"
     }
 
 }

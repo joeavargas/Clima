@@ -9,7 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ForecastCollectionViewCell" customModule="Clima" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ForecastCollectionViewCell" id="gTV-IL-0wX" customClass="ForecastCollectionViewCell" customModule="Clima" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="90" height="100"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -54,6 +54,11 @@
                 <constraint firstItem="Fah-uP-EZx" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="2" id="r0f-EF-4TR"/>
                 <constraint firstItem="m4U-pS-ySb" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="vjD-ip-MQI"/>
             </constraints>
+            <connections>
+                <outlet property="iconImage" destination="m4U-pS-ySb" id="VeO-yh-A0R"/>
+                <outlet property="tempLabel" destination="8Gr-Uk-D7g" id="Uig-xv-HWe"/>
+                <outlet property="timeLabel" destination="Fah-uP-EZx" id="1Et-5d-eP7"/>
+            </connections>
             <point key="canvasLocation" x="140.57971014492756" y="153.34821428571428"/>
         </collectionViewCell>
     </objects>
