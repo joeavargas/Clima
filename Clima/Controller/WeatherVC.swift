@@ -24,7 +24,7 @@ class WeatherVC: UIViewController {
     let locationManager = CLLocationManager()
     let geocoder = CLGeocoder()
     var location: CLLocation?
-    var weatherData: WeatherData?
+    var currentWeather: Current?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,14 +34,14 @@ class WeatherVC: UIViewController {
         
     }
     
-    func updateUI(weatherData: WeatherData){
-        dayAndDate.text = currentDateFrom(unixDate: weatherData.current.dt)?.dayAndDate()
-        for current in weatherData.current.weather{
+    func updateCurrentWeatherUIWith(currentWeather: Current){
+        dayAndDate.text = currentDateFrom(unixDate: currentWeather.dt)?.dayAndDate()
+        for current in currentWeather.weather{
             weatherConditionLabel.text = current.description.capitalized
             weatherIconImage.image = returnIconImage(from: current.icon)
             
         }
-        tempLabel.text = "\(Int(weatherData.current.temp))°"
+        tempLabel.text = "\(Int(currentWeather.temp))°"
     }
 
 
@@ -72,14 +72,14 @@ extension WeatherVC: CLLocationManagerDelegate{
             print("Long:", LocationService.shared.longitude!)
             NetworkRequest.shared.fetchWeatherData(location: coordinates) { data in
                 print("PRINT: ", data)
-                self.weatherData = data
+                self.currentWeather = data.current
                 DispatchQueue.main.async {
                     // TODO: Update UI with weather data
-                    self.updateUI(weatherData: data)
+                    self.updateCurrentWeatherUIWith(currentWeather: self.currentWeather!)
                 }
             } onError: { errorMessage in
                 // TODO: display error in an alert
-                print("PRINT: ", errorMessage)
+                print("PRINT: from getUserCoordinates", errorMessage)
             }
 
         }
