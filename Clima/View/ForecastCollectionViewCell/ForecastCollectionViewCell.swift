@@ -23,10 +23,18 @@ class ForecastCollectionViewCell: UICollectionViewCell {
         return UINib(nibName: "ForecastCollectionViewCell", bundle: nil)
     }
     
-    func configureCell(with model: Hourly){
-        self.timeLabel.text = currentDateFrom(unixDate: model.dt)?.time()
+    func configureHourly(with hourlyModel: Hourly){
+        self.timeLabel.text = currentDateFrom(unixDate: hourlyModel.dt)?.time()
+        // TODO: Fix icon retrieval
         self.iconImage.image = returnIconImage(from: "01d")
-        self.tempLabel.text = "\(model.temp)°"
+        self.tempLabel.text = "\(Int(hourlyModel.temp))°"
+    }
+    
+    func configureDaily(with dailyModel: Daily){
+        self.timeLabel.text = currentDateFrom(unixDate: dailyModel.dt)?.dayOfTheWeek()
+        // TODO: Fix icon retrieval
+        self.iconImage.image = returnIconImage(from: "01d")
+        self.tempLabel.text = "\(Int(dailyModel.temp.max))°"
     }
 
 }
