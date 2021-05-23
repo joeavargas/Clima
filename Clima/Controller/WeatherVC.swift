@@ -25,6 +25,8 @@ class WeatherVC: UIViewController {
     let geocoder = CLGeocoder()
     var location: CLLocation?
     var currentWeather: Current?
+    var hourlyWeather = [Hourly]()
+    var dailyWeather = [Daily]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,9 +75,12 @@ extension WeatherVC: CLLocationManagerDelegate{
             NetworkRequest.shared.fetchWeatherData(location: coordinates) { data in
                 print("PRINT: ", data)
                 self.currentWeather = data.current
+                self.hourlyWeather.append(contentsOf: data.hourly)
+                self.dailyWeather.append(contentsOf: data.daily)
                 DispatchQueue.main.async {
                     // TODO: Update UI with weather data
                     self.updateCurrentWeatherUIWith(currentWeather: self.currentWeather!)
+                    self.forecastCollectionView.reloadData()
                 }
             } onError: { errorMessage in
                 // TODO: display error in an alert
