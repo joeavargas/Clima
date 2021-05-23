@@ -35,7 +35,7 @@ class WeatherVC: UIViewController {
         forecastCollectionView.dataSource = self
         checkLocationServices()
         
-        
+        forecastSegment.addTarget(self, action: #selector(handleSegmentChange), for: .valueChanged)
     }
     
     func updateCurrentWeatherUIWith(currentWeather: Current){
@@ -46,6 +46,11 @@ class WeatherVC: UIViewController {
             
         }
         tempLabel.text = "\(Int(currentWeather.temp))°"
+    }
+    
+    @objc fileprivate func handleSegmentChange(){
+        print("PRINT: \(forecastSegment.selectedSegmentIndex)")
+        forecastCollectionView.reloadData()
     }
 
 
@@ -169,8 +174,17 @@ extension WeatherVC: UICollectionViewDelegate, UICollectionViewDataSource{
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let cell = forecastCollectionView.dequeueReusableCell(withReuseIdentifier: ForecastCollectionViewCell.identifier, for: indexPath) as! ForecastCollectionViewCell
-        cell.configureCell(with: hourlyWeather[indexPath.row])
+        switch forecastSegment.selectedSegmentIndex {
+        case 0:
+            cell.configureHourly(with: hourlyWeather[indexPath.row])
+        case 1:
+            cell.configureDaily(with: dailyWeather[indexPath.row])
+        default:
+            break
+        }
+        
         return cell
     }
 }
