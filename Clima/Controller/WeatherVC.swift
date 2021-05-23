@@ -30,7 +30,9 @@ class WeatherVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        forecastCollectionView.register(ForecastCollectionViewCell.nib(), forCellWithReuseIdentifier: ForecastCollectionViewCell.identifier)
+        forecastCollectionView.delegate = self
+        forecastCollectionView.dataSource = self
         checkLocationServices()
         
         
@@ -150,5 +152,17 @@ extension WeatherVC: CLLocationManagerDelegate{
                 }
             }
         }
+    }
+}
+
+extension WeatherVC: UICollectionViewDelegate, UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return hourlyWeather.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = forecastCollectionView.dequeueReusableCell(withReuseIdentifier: ForecastCollectionViewCell.identifier, for: indexPath) as! ForecastCollectionViewCell
+        cell.configureCell(with: hourlyWeather[indexPath.row])
+        return cell
     }
 }
