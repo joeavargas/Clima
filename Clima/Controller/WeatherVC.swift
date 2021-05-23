@@ -11,11 +11,20 @@ import CoreLocation
 class WeatherVC: UIViewController {
     
     // IBOulet
+    @IBOutlet weak var dayAndDate: UILabel!
     @IBOutlet weak var cityNameLabel: UILabel!
+    @IBOutlet weak var weatherConditionLabel: UILabel!
+    @IBOutlet weak var weatherIconImage: UIImageView!
+    @IBOutlet weak var tempLabel: UILabel!
+    @IBOutlet weak var forecastSegment: UISegmentedControl!
+    @IBOutlet weak var forecastCollectionView: UICollectionView!
     
+    
+    // Properties
     let locationManager = CLLocationManager()
     let geocoder = CLGeocoder()
     var location: CLLocation?
+    var weatherData: WeatherData?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +32,16 @@ class WeatherVC: UIViewController {
         checkLocationServices()
         
         
+    }
+    
+    func updateUI(weatherData: WeatherData){
+        dayAndDate.text = currentDateFrom(unixDate: weatherData.current.dt)?.dayAndDate()
+        for current in weatherData.current.weather{
+            weatherConditionLabel.text = current.description.capitalized
+            weatherIconImage.image = returnIconImage(from: current.icon)
+            
+        }
+        tempLabel.text = "\(Int(weatherData.current.temp))°"
     }
 
 
@@ -53,9 +72,10 @@ extension WeatherVC: CLLocationManagerDelegate{
             print("Long:", LocationService.shared.longitude!)
             NetworkRequest.shared.fetchWeatherData(location: coordinates) { data in
                 print("PRINT: ", data)
-                
+                self.weatherData = data
                 DispatchQueue.main.async {
                     // TODO: Update UI with weather data
+                    self.updateUI(weatherData: data)
                 }
             } onError: { errorMessage in
                 // TODO: display error in an alert
