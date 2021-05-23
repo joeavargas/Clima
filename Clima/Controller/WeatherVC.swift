@@ -77,8 +77,16 @@ extension WeatherVC: CLLocationManagerDelegate{
             NetworkRequest.shared.fetchWeatherData(location: coordinates) { data in
                 print("PRINT: ", data)
                 self.currentWeather = data.current
-                self.hourlyWeather.append(contentsOf: data.hourly)
-                self.dailyWeather.append(contentsOf: data.daily)
+                
+                // only append the next 5 hours to hourlyWeather array
+                for hourlyData in data.hourly[1...5]{
+                    self.hourlyWeather.append(hourlyData)
+                }
+                // only append the next 5 days to dailyWeather array
+                for dailyData in data.daily[1...5]{
+                    self.dailyWeather.append(dailyData)
+                }
+                
                 DispatchQueue.main.async {
                     // TODO: Update UI with weather data
                     self.updateCurrentWeatherUIWith(currentWeather: self.currentWeather!)
