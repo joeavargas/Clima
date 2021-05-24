@@ -168,9 +168,29 @@ extension WeatherVC: CLLocationManagerDelegate{
     }
 }
 
-extension WeatherVC: UICollectionViewDelegate, UICollectionViewDataSource{
+extension WeatherVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        switch forecastSegment.selectedSegmentIndex {
+        case 0:
+            return CGSize(width: 70, height: 100)
+        case 1:
+            return CGSize(width: 70, height: 100)
+        default:
+           return CGSize(width: 0, height: 0)
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return hourlyWeather.count
+        switch forecastSegment.selectedSegmentIndex {
+        case 0:
+            return hourlyWeather.count
+        case 1:
+            return dailyWeather.count
+        default:
+            return 5
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

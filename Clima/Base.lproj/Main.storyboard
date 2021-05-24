@@ -69,14 +69,14 @@
                                     <segment title="Next 5 days"/>
                                 </segments>
                             </segmentedControl>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lff-L7-uVD">
-                                <rect key="frame" x="20" y="516" width="374" height="100"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lff-L7-uVD">
+                                <rect key="frame" x="20" y="516" width="374" height="150"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="WcX-4r-xXd"/>
+                                    <constraint firstAttribute="height" constant="150" id="WcX-4r-xXd"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ApU-8O-TEe">
-                                    <size key="itemSize" width="90" height="100"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ApU-8O-TEe">
+                                    <size key="itemSize" width="0.0" height="0.0"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
