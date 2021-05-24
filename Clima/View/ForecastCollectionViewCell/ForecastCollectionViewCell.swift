@@ -26,14 +26,18 @@ class ForecastCollectionViewCell: UICollectionViewCell {
     func configureHourly(with hourlyModel: Hourly){
         self.timeLabel.text = currentDateFrom(unixDate: hourlyModel.dt)?.time()
         // TODO: Fix icon retrieval
-        self.iconImage.image = returnIconImage(from: "01d")
+        for hourlyWeather in hourlyModel.weather{
+            self.iconImage.image = returnIconImage(from: hourlyWeather.icon)
+        }
         self.tempLabel.text = "\(Int(hourlyModel.temp))°"
     }
     
     func configureDaily(with dailyModel: Daily){
         self.timeLabel.text = currentDateFrom(unixDate: dailyModel.dt)?.dayOfTheWeek()
         // TODO: Fix icon retrieval
-        self.iconImage.image = returnIconImage(from: "01d")
+        for dailyWeather in dailyModel.weather{
+            self.iconImage.image = returnIconImage(from: dailyWeather.icon)
+        }
         self.tempLabel.text = "\(Int(dailyModel.temp.max))°"
     }
 
