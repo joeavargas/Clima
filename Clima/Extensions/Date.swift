@@ -25,7 +25,7 @@ extension Date{
     // Returns "Sunday", "Monday", etc...
     func dayOfTheWeek() -> String{
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EEEE"
+        dateFormatter.dateFormat = "E"
         return dateFormatter.string(from: self)
     }
     
