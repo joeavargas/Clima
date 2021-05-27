@@ -177,9 +177,11 @@ extension WeatherVC: CLLocationManagerDelegate{
 
 // MARK: - Search City's Weather Delegate
 extension WeatherVC: ChangeCityDelegate{
-    func userEnteredANewCityName(city: String, latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
-        print("City name is \(city) | Latitude is \(latitude) | Longitude is \(longitude)")
+    func userEnteredANewCityName(city: String, coordinates: CLLocationCoordinate2D) {
+        print("City name is \(city) | Latitude is \(coordinates.latitude) | Longitude is \(coordinates.longitude)")
     }
+    
+    
 
 }
 // MARK: - CollectionView Delegate and Datasource

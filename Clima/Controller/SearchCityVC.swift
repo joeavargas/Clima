@@ -9,7 +9,7 @@ import UIKit
 import CoreLocation
 
 protocol ChangeCityDelegate{
-    func userEnteredANewCityName(city: String, latitude: CLLocationDegrees, longitude: CLLocationDegrees)
+    func userEnteredANewCityName(city: String, coordinates: CLLocationCoordinate2D)
 }
 
 class SearchCityVC: UIViewController {
@@ -35,11 +35,10 @@ class SearchCityVC: UIViewController {
         getLocation(forPlaceCalled: enteredLocation!) { location in
             // TODO: Reverse Geocode entered city name and get coordinates
             guard let city = location?.name else {return}
-            guard let latitude = location?.location?.coordinate.latitude else {return}
-            guard let longitude = location?.location?.coordinate.longitude else {return}
+            guard let coordinates = location?.location?.coordinate else {return}
             
             // TODO: Pass coordinates to delegate function
-            self.delegate?.userEnteredANewCityName(city: city, latitude: latitude, longitude: longitude)
+            self.delegate?.userEnteredANewCityName(city: city, coordinates: coordinates)
         }
 
         // Dismiss SearchCityVC
