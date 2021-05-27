@@ -88,7 +88,6 @@ extension WeatherVC: CLLocationManagerDelegate{
             print("Lat:", LocationService.shared.lattitude!)
             print("Long:", LocationService.shared.longitude!)
             NetworkRequest.shared.fetchWeatherData(location: coordinates) { data in
-                print("PRINT: ", data)
                 self.currentWeather = data.current
                 
                 // only append the next 5 hours to hourlyWeather array
