@@ -8,6 +8,10 @@
 import UIKit
 import CoreLocation
 
+protocol ChangeCityDelegate{
+    func userEnteredANewCityName(city: String, latitude: CLLocationDegrees, longitude: CLLocationDegrees)
+}
+
 class SearchCityVC: UIViewController {
     
     // MARK: Outlets
@@ -15,6 +19,7 @@ class SearchCityVC: UIViewController {
     @IBOutlet weak var searchBtn: UIButton!
     
     // MARK: Properties
+    var delegate: ChangeCityDelegate?
     
     // MARK: App Life Cycle
     override func viewDidLoad() {
@@ -32,9 +37,9 @@ class SearchCityVC: UIViewController {
             guard let city = location?.name else {return}
             guard let latitude = location?.location?.coordinate.latitude else {return}
             guard let longitude = location?.location?.coordinate.longitude else {return}
-            print("City: \(city) | Latitude: \(latitude) | Longitude: \(longitude)")
             
             // TODO: Pass coordinates to delegate function
+            self.delegate?.userEnteredANewCityName(city: city, latitude: latitude, longitude: longitude)
         }
 
         // Dismiss SearchCityVC

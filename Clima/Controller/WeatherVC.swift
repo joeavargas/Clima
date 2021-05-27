@@ -58,7 +58,7 @@ class WeatherVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toSearchCityVC"{
             let destinationVC = segue.destination as? SearchCityVC
-            // TODO: set destinationVC.delegate = self
+            destinationVC!.delegate = self
         }
     }
 
@@ -175,6 +175,14 @@ extension WeatherVC: CLLocationManagerDelegate{
     }
 }
 
+// MARK: - Search City's Weather Delegate
+extension WeatherVC: ChangeCityDelegate{
+    func userEnteredANewCityName(city: String, latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
+        print("City name is \(city) | Latitude is \(latitude) | Longitude is \(longitude)")
+    }
+
+}
+// MARK: - CollectionView Delegate and Datasource
 extension WeatherVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
