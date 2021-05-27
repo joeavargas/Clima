@@ -167,7 +167,6 @@ extension WeatherVC: CLLocationManagerDelegate{
         geocoder.reverseGeocodeLocation(location) { placemarks, error in
             if error == nil, let placemark = placemarks, !placemark.isEmpty{
                 DispatchQueue.main.async {
-                    print("PRINT: ", placemark.first?.locality!)
                     self.cityNameLabel.text = placemark.first?.locality!
                 }
             }
@@ -179,9 +178,13 @@ extension WeatherVC: CLLocationManagerDelegate{
 extension WeatherVC: ChangeCityDelegate{
     func userEnteredANewCityName(city: String, coordinates: CLLocationCoordinate2D) {
         print("City name is \(city) | Latitude is \(coordinates.latitude) | Longitude is \(coordinates.longitude)")
-        NetworkRequest.shared.fetchWeatherData(location: coordinates) { [self] data in
+        NetworkRequest.shared.fetchWeatherData(location: coordinates) { data in
             self.currentWeather = data.current
-            cityNameLabel.text = city
+            self.cityNameLabel.text = city
+            
+            // clear out hourlyWeather and dailyWeather arrays to append searched city weather data
+            self.hourlyWeather.removeAll()
+            self.dailyWeather.removeAll()
             
             // only append the next 5 hours to hourlyWeather array
             for hourlyData in data.hourly[1...5]{
