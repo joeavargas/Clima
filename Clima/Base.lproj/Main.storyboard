@@ -87,7 +87,7 @@
                                 <rect key="frame" x="374.33333333333331" y="20" width="19.666666666666686" height="22"/>
                                 <state key="normal" image="magnifyingglass" catalog="system"/>
                                 <connections>
-                                    <segue destination="jLi-Os-bu9" kind="show" id="YyE-3b-Jtn"/>
+                                    <segue destination="jLi-Os-bu9" kind="show" identifier="toSearchCityVC" id="YyE-3b-Jtn"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -156,6 +156,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3TV-Dk-C8N">
                                 <rect key="frame" x="183" y="395" width="48" height="30"/>
                                 <state key="normal" title="Search"/>
+                                <connections>
+                                    <action selector="searchCityBtnPressed:" destination="jLi-Os-bu9" eventType="touchUpInside" id="dBB-SJ-azc"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="els-yD-rqh"/>
@@ -170,6 +173,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="oJo-NJ-yDx"/>
+                    <connections>
+                        <outlet property="searchBtn" destination="3TV-Dk-C8N" id="GG6-sf-PPn"/>
+                        <outlet property="searchCityTextField" destination="8LI-pW-UvO" id="rZX-8D-N7I"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lpg-Ji-zn9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

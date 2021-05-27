@@ -53,6 +53,14 @@ class WeatherVC: UIViewController {
         forecastCollectionView.reloadData()
     }
 
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toSearchCityVC"{
+            let destinationVC = segue.destination as? SearchCityVC
+            // TODO: set destinationVC.delegate = self
+        }
+    }
 
 }
 
