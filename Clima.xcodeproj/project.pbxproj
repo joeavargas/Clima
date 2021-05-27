@@ -20,6 +20,7 @@
 		E3310D1B2650F5410031351E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3310D192650F5410031351E /* Main.storyboard */; };
 		E3310D1D2650F5420031351E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3310D1C2650F5420031351E /* Assets.xcassets */; };
 		E3310D202650F5420031351E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3310D1E2650F5420031351E /* LaunchScreen.storyboard */; };
+		E35D8E45265FDD800034A60F /* SearchCityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35D8E44265FDD800034A60F /* SearchCityVC.swift */; };
 		E3957F27265125170074C3CA /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3957F26265125170074C3CA /* LocationService.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		E3310D1C2650F5420031351E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E3310D1F2650F5420031351E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E3310D212650F5420031351E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E35D8E44265FDD800034A60F /* SearchCityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCityVC.swift; sourceTree = "<group>"; };
 		E3957F26265125170074C3CA /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -143,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				E3310D172650F5410031351E /* WeatherVC.swift */,
+				E35D8E44265FDD800034A60F /* SearchCityVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 				E30AEAE4265A2D140038B59B /* UnixTimeConverter.swift in Sources */,
 				E30AEADD265940340038B59B /* ForecastCollectionViewCell.swift in Sources */,
 				E30AEAD8265913590038B59B /* Weather.swift in Sources */,
+				E35D8E45265FDD800034A60F /* SearchCityVC.swift in Sources */,
 				E3310D162650F5410031351E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -53,6 +53,14 @@ class WeatherVC: UIViewController {
         forecastCollectionView.reloadData()
     }
 
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toSearchCityVC"{
+            let destinationVC = segue.destination as? SearchCityVC
+            destinationVC!.delegate = self
+        }
+    }
 
 }
 
@@ -80,7 +88,6 @@ extension WeatherVC: CLLocationManagerDelegate{
             print("Lat:", LocationService.shared.lattitude!)
             print("Long:", LocationService.shared.longitude!)
             NetworkRequest.shared.fetchWeatherData(location: coordinates) { data in
-                print("PRINT: ", data)
                 self.currentWeather = data.current
                 
                 // only append the next 5 hours to hourlyWeather array
@@ -160,7 +167,6 @@ extension WeatherVC: CLLocationManagerDelegate{
         geocoder.reverseGeocodeLocation(location) { placemarks, error in
             if error == nil, let placemark = placemarks, !placemark.isEmpty{
                 DispatchQueue.main.async {
-                    print("PRINT: ", placemark.first?.locality!)
                     self.cityNameLabel.text = placemark.first?.locality!
                 }
             }
@@ -168,6 +174,42 @@ extension WeatherVC: CLLocationManagerDelegate{
     }
 }
 
+// MARK: - Search City's Weather Delegate
+extension WeatherVC: ChangeCityDelegate{
+    func userEnteredANewCityName(city: String, coordinates: CLLocationCoordinate2D) {
+        print("City name is \(city) | Latitude is \(coordinates.latitude) | Longitude is \(coordinates.longitude)")
+        NetworkRequest.shared.fetchWeatherData(location: coordinates) { data in
+            self.currentWeather = data.current
+            self.cityNameLabel.text = city
+            
+            // clear out hourlyWeather and dailyWeather arrays to append searched city weather data
+            self.hourlyWeather.removeAll()
+            self.dailyWeather.removeAll()
+            
+            // only append the next 5 hours to hourlyWeather array
+            for hourlyData in data.hourly[1...5]{
+                self.hourlyWeather.append(hourlyData)
+            }
+            // only append the next 5 days to dailyWeather array
+            for dailyData in data.daily[1...5]{
+                self.dailyWeather.append(dailyData)
+            }
+            
+            DispatchQueue.main.async {
+                // TODO: Update UI with weather data
+                self.updateCurrentWeatherUIWith(currentWeather: self.currentWeather!)
+                self.forecastCollectionView.reloadData()
+            }
+        } onError: { errorMessage in
+            print("PRINT: from getUserCoordinates", errorMessage)
+        }
+
+    }
+    
+    
+
+}
+// MARK: - CollectionView Delegate and Datasource
 extension WeatherVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
