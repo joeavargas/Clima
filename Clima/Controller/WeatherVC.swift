@@ -179,6 +179,28 @@ extension WeatherVC: CLLocationManagerDelegate{
 extension WeatherVC: ChangeCityDelegate{
     func userEnteredANewCityName(city: String, coordinates: CLLocationCoordinate2D) {
         print("City name is \(city) | Latitude is \(coordinates.latitude) | Longitude is \(coordinates.longitude)")
+        NetworkRequest.shared.fetchWeatherData(location: coordinates) { [self] data in
+            self.currentWeather = data.current
+            cityNameLabel.text = city
+            
+            // only append the next 5 hours to hourlyWeather array
+            for hourlyData in data.hourly[1...5]{
+                self.hourlyWeather.append(hourlyData)
+            }
+            // only append the next 5 days to dailyWeather array
+            for dailyData in data.daily[1...5]{
+                self.dailyWeather.append(dailyData)
+            }
+            
+            DispatchQueue.main.async {
+                // TODO: Update UI with weather data
+                self.updateCurrentWeatherUIWith(currentWeather: self.currentWeather!)
+                self.forecastCollectionView.reloadData()
+            }
+        } onError: { errorMessage in
+            print("PRINT: from getUserCoordinates", errorMessage)
+        }
+
     }
     
     
