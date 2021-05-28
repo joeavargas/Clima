@@ -24,18 +24,25 @@ class SearchCityVC: UIViewController {
     // MARK: App Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        addGradientBackground()
         
         searchCityTextField.placeholder = "Search city"
         searchCityTextField.layer.borderWidth = 1
-        searchCityTextField.layer.borderColor = #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1)
+        searchCityTextField.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         searchCityTextField.layer.cornerRadius = 8
         
         searchBtn.layer.borderWidth = 2
-        searchBtn.layer.borderColor = #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1)
+        searchBtn.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         searchBtn.layer.cornerRadius = 8
-
+        searchBtn.titleLabel?.tintColor = .white
     }
-    
+    // MARK: - Function
+    func addGradientBackground(){
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = self.view.bounds
+        gradientLayer.colors = [UIColor.white.cgColor, UIColor.blue.cgColor]
+        self.view.layer.insertSublayer(gradientLayer, at: 0)
+    }
     // MARK: - IBActions
     
     @IBAction func searchCityBtnPressed(_ sender: Any) {
