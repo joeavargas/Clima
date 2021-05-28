@@ -154,7 +154,10 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3TV-Dk-C8N">
-                                <rect key="frame" x="183" y="395" width="48" height="30"/>
+                                <rect key="frame" x="132" y="395" width="150" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="mOC-wL-0pk"/>
+                                </constraints>
                                 <state key="normal" title="Search"/>
                                 <connections>
                                     <action selector="searchCityBtnPressed:" destination="jLi-Os-bu9" eventType="touchUpInside" id="dBB-SJ-azc"/>
@@ -165,7 +168,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="8LI-pW-UvO" firstAttribute="centerY" secondItem="hhs-Am-YRz" secondAttribute="centerY" id="10S-cy-ogA"/>
-                            <constraint firstItem="3TV-Dk-C8N" firstAttribute="centerX" secondItem="hhs-Am-YRz" secondAttribute="centerX" id="DKy-Z5-r8c"/>
+                            <constraint firstItem="3TV-Dk-C8N" firstAttribute="centerX" secondItem="hhs-Am-YRz" secondAttribute="centerX" id="4z1-Sa-Th9"/>
                             <constraint firstItem="VOB-Mg-piA" firstAttribute="leading" secondItem="els-yD-rqh" secondAttribute="leading" constant="16" id="Tut-kH-3T5"/>
                             <constraint firstItem="3TV-Dk-C8N" firstAttribute="top" secondItem="8LI-pW-UvO" secondAttribute="bottom" constant="20" id="pKf-g9-Z2F"/>
                             <constraint firstItem="VOB-Mg-piA" firstAttribute="top" secondItem="els-yD-rqh" secondAttribute="top" constant="20" id="u7q-Aa-ZGr"/>
