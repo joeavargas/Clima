@@ -127,13 +127,15 @@ extension WeatherVC: CLLocationManagerDelegate{
             locationManager.startUpdatingLocation()
             break
         case .denied:
-            //TODO: Show an alert instructing user how to turn on permission
+            // Show an alert instructing user how to turn on permission
+            alertUserToEnableLocationPermission()
             break
         case.notDetermined:
             locationManager.requestWhenInUseAuthorization()
             break
         case .restricted:
-            //TODO: Show an alert instructing user how to turn on permission
+            // Show an alert instructing user how to turn on permission
+            alertUserToEnableLocationPermission()
             break
         case .authorizedAlways:
             break
@@ -202,7 +204,7 @@ extension WeatherVC: ChangeCityDelegate{
             }
             
             DispatchQueue.main.async {
-                // TODO: Update UI with weather data
+                // Update UI with weather data
                 self.updateCurrentWeatherUIWith(currentWeather: self.currentWeather!)
                 self.forecastCollectionView.reloadData()
             }
@@ -254,5 +256,15 @@ extension WeatherVC: UICollectionViewDelegate, UICollectionViewDataSource, UICol
         }
         
         return cell
+    }
+}
+
+//MARK: - Error Handling
+extension WeatherVC{
+    func alertUserToEnableLocationPermission(){
+        let ac = UIAlertController(title: "Permission Error", message: "Please enable permissions by going to Settings > Privacy > Clima and select While Using the App", preferredStyle: .alert)
+        
+        ac.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        self.present(ac, animated: true, completion: nil)
     }
 }
