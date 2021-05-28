@@ -27,15 +27,25 @@ class WeatherVC: UIViewController {
     var currentWeather: Current?
     var hourlyWeather = [Hourly]()
     var dailyWeather = [Daily]()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        addGradientBackground()
+
         forecastCollectionView.register(ForecastCollectionViewCell.nib(), forCellWithReuseIdentifier: ForecastCollectionViewCell.identifier)
         forecastCollectionView.delegate = self
         forecastCollectionView.dataSource = self
         checkLocationServices()
         
         forecastSegment.addTarget(self, action: #selector(handleSegmentChange), for: .valueChanged)
+    }
+    
+    func addGradientBackground(){
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = self.view.bounds
+        gradientLayer.colors = [UIColor.white.cgColor, UIColor.blue.cgColor]
+        self.view.layer.insertSublayer(gradientLayer, at: 0)
     }
     
     func updateCurrentWeatherUIWith(currentWeather: Current){
