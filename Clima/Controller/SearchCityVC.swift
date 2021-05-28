@@ -24,8 +24,16 @@ class SearchCityVC: UIViewController {
     // MARK: App Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        searchCityTextField.placeholder = "Search city"
+        searchCityTextField.layer.borderWidth = 1
+        searchCityTextField.layer.borderColor = #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1)
+        searchCityTextField.layer.cornerRadius = 8
+        
+        searchBtn.layer.borderWidth = 2
+        searchBtn.layer.borderColor = #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1)
+        searchBtn.layer.cornerRadius = 8
 
-        // Do any additional setup after loading the view.
     }
     
     // MARK: - IBActions

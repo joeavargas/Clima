@@ -49,7 +49,6 @@ class WeatherVC: UIViewController {
     }
     
     @objc fileprivate func handleSegmentChange(){
-        print("PRINT: \(forecastSegment.selectedSegmentIndex)")
         forecastCollectionView.reloadData()
     }
 
@@ -85,8 +84,6 @@ extension WeatherVC: CLLocationManagerDelegate{
         if let coordinates = locationManager.location?.coordinate{
             LocationService.shared.lattitude = coordinates.latitude
             LocationService.shared.longitude = coordinates.longitude
-            print("Lat:", LocationService.shared.lattitude!)
-            print("Long:", LocationService.shared.longitude!)
             NetworkRequest.shared.fetchWeatherData(location: coordinates) { data in
                 self.currentWeather = data.current
                 
@@ -177,7 +174,6 @@ extension WeatherVC: CLLocationManagerDelegate{
 // MARK: - Search City's Weather Delegate
 extension WeatherVC: ChangeCityDelegate{
     func userEnteredANewCityName(city: String, coordinates: CLLocationCoordinate2D) {
-        print("City name is \(city) | Latitude is \(coordinates.latitude) | Longitude is \(coordinates.longitude)")
         NetworkRequest.shared.fetchWeatherData(location: coordinates) { data in
             self.currentWeather = data.current
             self.cityNameLabel.text = city
