@@ -15,7 +15,7 @@ class NetworkRequest {
     
     static let shared = NetworkRequest()
 
-    lazy var API_KEY = "518596e8c6802246f190698a108afa4a"
+    lazy var API_KEY = ""
     let session = URLSession(configuration: .default)
     
     func fetchWeatherData(location: CLLocationCoordinate2D, onSuccess: @escaping OnApiSuccess, onError: @escaping OnApiError){
